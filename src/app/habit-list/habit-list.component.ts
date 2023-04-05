@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { Habit } from '../habit';
 import { HabitService } from '../habit.service';
 
@@ -23,13 +23,16 @@ export class HabitListComponent implements OnInit {
   constructor(private habitsService: HabitService) {}
 
   ngOnInit(): void {
-    this.habits = this.habitsService.getHabbits().pipe(
-      map((habits) => {
-        return habits.map((habit) => {
-          habit.streak = habit.count > 5;
-          return habit;
-        });
-      })
+    // this.habits = this.habitsService.getHabbits().pipe(
+    //   map((habits) => {
+    //     return habits.map((habit) => {
+    //       habit.streak = habit.count > 5;
+    //       return habit;
+    //     });
+    //   })
+    // );
+    this.habits = this.habitsService.refetch.pipe(
+      switchMap(() => this.habitsService.getHabbits())
     );
   }
 
