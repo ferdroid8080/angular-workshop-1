@@ -11,6 +11,12 @@ import { ActivatedRoute } from '@angular/router';
       <li><a [routerLink]="['/account', 2]">Account 2</a></li>
       <li><a [routerLink]="['/account', 3]">Account 3</a></li>
     </ul>
+    <hr />
+    <ul>
+      <li><a routerLinkActive="active" routerLink="info">Info</a></li>
+      <li><a routerLinkActive="active" routerLink="items">Items</a></li>
+    </ul>
+    <router-outlet></router-outlet>
   `,
   styles: [],
 })

@@ -12,11 +12,20 @@ import { HabitFormComponent } from './habit-form/habit-form.component';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { SystemInfoComponent } from './system-info/system-info.component';
+import { SystemItemsComponent } from './system-items/system-items.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'account', component: AccountComponent },
-  { path: 'account/:id', component: AccountDetailComponent },
+  {
+    path: 'account/:id',
+    component: AccountDetailComponent,
+    children: [
+      { path: 'info', component: SystemInfoComponent },
+      { path: 'items', component: SystemItemsComponent },
+    ],
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
@@ -30,6 +39,8 @@ const routes: Routes = [
     HomeComponent,
     AccountComponent,
     AccountDetailComponent,
+    SystemInfoComponent,
+    SystemItemsComponent,
   ],
   imports: [
     BrowserModule,
