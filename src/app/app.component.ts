@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
     <div class="container">
       <h1>{{ title }}</h1>
       <app-habit-list></app-habit-list>
+      <hr />
+      <nav>
+        <ul>
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/account">Account</a></li>
+        </ul>
+      </nav>
       <router-outlet></router-outlet>
     </div>
   `,
