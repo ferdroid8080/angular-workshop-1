@@ -26,8 +26,8 @@ export class SystemItemsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.route.parent &&
-      this.route.parent.paramMap
+    this.route &&
+      this.route.paramMap
         .pipe(
           switchMap((params: ParamMap) => {
             this.id = +params.get('id')!;
